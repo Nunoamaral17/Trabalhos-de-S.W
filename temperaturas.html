@@ -1,0 +1,30 @@
+<!DOCTYPE = html>
+<html>
+<head> </head>
+
+<body>
+<h2>Página sobre temperaturas em cidades portuguesas</h2>
+<button type="button" onclick="funcao1()">Introduzir temperaturas</button>
+<p id="max"></p>
+<p id="med"></p>
+
+<script>
+
+function funcao1() {
+	str = prompt("Introduza as temperaturas");
+	temp = str.split(",");
+	alert(temp.length);
+
+	var v_temp = [];
+	for(i=0; i<temp.length; i++)
+	{
+		v_temp[i] = Number(temp[i]);
+		alert(v_temp[i]*2);
+	}
+
+	//document.getElementById("max").innerHTML = temp;
+}
+
+</script>
+</html> 
+
