@@ -1,0 +1,40 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura de cidades</title>
+</head>
+<body>
+    <h3>Digite a temperatura de 3 cidades</h3>
+    <form>
+        <label>1ª Cidade: </label><input id="1ºInput"><br>
+        <label>2ª Cidade: </label><input id="2ºInput"><br>
+        <label>3ª Cidade: </label><input id="3ºInput"><br>
+    </form>
+
+    <button id="button">Click to submit</button>
+    <p id="Auxiliar"></p>
+
+    <script>
+
+        document.getElementById('button').addEventListener("click", TemperaturaMax)
+        function TemperaturaMax(){
+            var cidade1 = Number(document.getElementById('1ºInput').value);
+            var cidade2 = Number(document.getElementById('2ºInput').value);
+            var cidade3 = Number(document.getElementById('3ºInput').value);
+            var x = document.getElementById('Auxiliar')
+
+            var Auxiliar = [cidade1,cidade2,cidade3];
+            var TempMaxima = Auxiliar[0];
+
+            for(var i = 0; i < Auxiliar.length; i ++){
+                if(Auxiliar[i] > TempMaxima){
+                    TempMaxima =  Auxiliar[i];
+                }
+            }
+
+            x.innerHTML = "A temperatura mais alta é : " + TempMaxima;
+        }
+    </script>
+
+</body>
+</html>
