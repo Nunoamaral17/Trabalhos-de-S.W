@@ -1,0 +1,51 @@
+<!DOCTYPE = html>
+<html>
+<head>
+</head>
+
+
+<body>
+
+<h2>CALCULADORA</h2>
+<input id="a"><br><br> 
+<input id="b"> <br><br>
+<input id="c"> <br><br>
+<button type="button" onclick="MyFunction4()">calcular</button>
+<p id="p_res"></p>
+
+
+<script>
+
+function MyFunction4() {
+  var oper, res ,x ,y;
+
+  // Get the value of the input field with id="numb"
+  x = Number(document.getElementById("a").value);
+   y =Number(document.getElementById("b").value);
+    oper = document.getElementById("c").value;
+
+  // If x is Not a Number or less than one or greater than 10
+  if (isNaN(x) || isNaN(y)) {
+    res = "error";
+  } else {
+    if(oper=="+")
+      res = x + y;
+      if(oper=="-")
+     res = x - y;
+     if(oper=="/")
+     res = x/y;
+     if(oper=="*")
+     res = x*y;
+     if(oper=="%")
+     res = x%y;
+
+    res= "resultado =" + res;
+  }
+
+  document.getElementById("p_res").innerHTML = res;
+}
+
+</script>
+
+
+</html> 
