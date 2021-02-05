@@ -1,0 +1,68 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genius API</title>
+    <h1>Genius API</h1>
+</head>
+<body>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ixwHNkMMsSk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <br><br>
+    <form>
+        <label>Nome do cantor</label>
+        <input id="input">
+    </form>
+    <button id="btn" type="button">Submeter</button>
+    <br><br>
+    <img id="img" src="" width="200" height="200">
+    <h1 id="cantor">Nome do Cantor</h1>
+
+
+
+    <script>
+   
+
+        
+        document.getElementById('btn').addEventListener('click', Search)
+
+        function Search(){
+
+            var cantor = document.getElementById('cantor');
+            var inputvalue = document.getElementById('input').value;
+            var btn = document.getElementById("btn");
+            var acesstoken = "KJpRgKcl4gu0JwLraMX9_xpN-Gmw--Ycn1NBH7UWVHAXgrkWM9RqjsEzssKn3Anb"
+
+            fetch("https://api.genius.com/search?access_token="+ acesstoken +"&q="+inputvalue)
+                .then((response) => response.json())
+                .then(function(data) {
+                    
+                    
+
+                    //coloca todos os paragrafos dentro de um array
+                    var p = document.querySelectorAll('p');
+
+                    for(var i = 0; i < p.length; i ++){
+                        p[i].innerHTML = " ";
+                    }
+           
+                    
+                var aux = data.response.hits.map(function(hit){
+                    document.getElementById('img').src = hit.result.primary_artist.header_image_url;
+            
+
+                    cantor.innerHTML = hit.result.primary_artist.name;
+
+                    //cria um novo paragrafo
+                    var para = document.createElement("P");
+                    para.innerHTML = hit.result.full_title;
+                    document.body.appendChild(para);
+
+                 })      
+                })
+                .catch(function(error){
+                    console.log(error);
+            });
+    }
+    </script>
+</body>
+</html>
